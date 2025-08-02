@@ -445,6 +445,11 @@ body {
 
 /* Responsive text */
 @media (max-width: 768px) {
+  /* Hide scroll indicator on mobile */
+  .scroll-indicator {
+    display: none !important;
+  }
+  
   .text-hero {
     font-size: clamp(3rem, 15vw, 8rem);
   }

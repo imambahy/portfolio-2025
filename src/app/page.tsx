@@ -210,7 +210,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="scroll-indicator">
+        <div className="scroll-indicator hidden md:block">
           <span className="text-white/60 font-opensauce text-sm">
             Scroll down
           </span>
