@@ -10,7 +10,6 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.pageYOffset;
       const windowHeight = window.innerHeight;
       
       projectRefs.current.forEach((ref, index) => {
@@ -179,21 +178,21 @@ export default function Home() {
                 </h2>
                 <div className="about-text">
                   <p className="mb-4">
-                    Hey! I’m a web developer from{" "}
+                    Hey! I&apos;m a web developer from{" "}
                     <span className="about-highlight">Bekasi, Indonesia</span>{" "}
                     who loves crafting smooth, interactive experiences on the
-                    web. Whether it’s building out{" "}
+                    web. Whether it&apos;s building out{" "}
                     <span className="about-highlight">e-commerce sites</span> or
                     coding{" "}
                     <span className="about-highlight">
                       cloud-powered chatbots
                     </span>
-                    , I’m all about writing code that clicks — both functionally
+                    , I&apos;m all about writing code that clicks — both functionally
                     and visually.
                   </p>
                   <p>
                     Always up for collaboration, good ideas, or just nerding out
-                    over design systems. Let’s connect and create something
+                    over design systems. Let&apos;s connect and create something
                     awesome together!
                   </p>
                 </div>
@@ -285,7 +284,7 @@ export default function Home() {
               {/* Left - Interests */}
               <div className="space-y-8">
                 <h3 className="text-white font-opensauce text-lg mb-6">
-                  When I'm not coding, you'll find me:
+                  When I&apos;m not coding, you&apos;ll find me:
                 </h3>
                 
                 <div className="space-y-4">
@@ -370,8 +369,8 @@ export default function Home() {
             
             <div className="mt-12 text-center">
               <p className="text-white/80 font-opensauce text-lg leading-relaxed max-w-3xl mx-auto">
-                Want to know more about me? Let's connect and share our interests! 
-                I'm always open to discussing music, games, books, or any tech topics.
+                Want to know more about me? Let&apos;s connect and share our interests! 
+                I&apos;m always open to discussing music, games, books, or any tech topics.
               </p>
             </div>
           </div>
@@ -393,7 +392,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn-outline font-opensauce text-xs cursor-none"
               >
-                LET'S COLLABORATE
+                LET&apos;S COLLABORATE
               </a>
               <a 
                 href="https://www.linkedin.com/in/imambahyputra/" 
