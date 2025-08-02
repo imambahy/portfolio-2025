@@ -9,33 +9,26 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex justify-between items-center">
-      <div className="text-xl font-light animate-fade-in-left">
-        IBP
+    <nav className="flex justify-between items-center w-full">
+      {/* Left - Name */}
+      <div className="text-white font-opensauce text-sm animate-fade-in-left">
+        IMAM<br />
+        BAHY
       </div>
 
-      {/* Navigation */}
-      <div className="flex gap-8 animate-fade-in-right">
-        <button 
-          onClick={() => scrollToSection('resume')}
-          className="text-white/80 hover:text-green-400 transition-all duration-300 relative group cursor-none"
-        >
-          RESUME
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
-        </button>
-        <button 
-          onClick={() => scrollToSection('projects')}
-          className="text-white/80 hover:text-green-400 transition-all duration-300 relative group cursor-none"
-        >
-          PROJECTS
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
-        </button>
+      {/* Center - Title */}
+      <div className="text-white font-opensauce text-sm animate-fade-in-up text-center">
+        FULLSTACK DEVELOPER<br />
+        FOLIO // 2025
+      </div>
+
+      {/* Right - Contact Button */}
+      <div className="animate-fade-in-right">
         <button 
           onClick={() => scrollToSection('contact')}
-          className="text-white/80 hover:text-green-400 transition-all duration-300 relative group cursor-none"
+          className="btn-outline font-opensauce text-xs"
         >
           CONTACT
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-400 transition-all duration-300 group-hover:w-full"></span>
         </button>
       </div>
     </nav>

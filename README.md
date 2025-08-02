@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio 2025 - Imam Bahy Putra Susetyo
 
-## Getting Started
+A modern, minimalist personal portfolio website inspired by [Seyi's design](https://www.seyi.dev/) with improved text positioning, parallax effects, and enhanced interactive elements.
 
-First, run the development server:
+## 🚀 Live Demo
 
+Visit the live website: [https://portfolio-2025-ten-nu.vercel.app/](https://portfolio-2025-ten-nu.vercel.app/)
+
+## ✨ Features
+
+### 🎨 Design Features
+- **Minimalist Dark Theme**: Clean black background with white text
+- **Custom Typography**: Uses Danfo, Bebas Neue, and Open Sauce fonts
+- **Custom Cursor**: Interactive cursor with hover effects
+- **Smooth Animations**: GSAP-powered scroll animations
+
+### 📱 Layout Improvements
+- **Improved Text Positioning**: Better spacing and alignment
+- **Parallax Effects**: Subtle parallax scrolling on featured projects
+- **Enhanced About Section**: Better layout with highlighted text
+- **Responsive Design**: Optimized for all screen sizes
+
+### 🎮 Interactive Elements
+- **Featured Projects**: 3 projects with hover effects and parallax
+- **Mini Game**: Interactive target clicking game in Icebreakers section
+- **Smooth Scrolling**: Enhanced scroll behavior
+- **Hover Animations**: Subtle animations on project links
+- **Scroll Indicators**: Visual cues for navigation
+
+## 🛠️ Technologies Used
+
+- **Next.js 14**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first CSS framework
+- **GSAP**: Advanced animations and scroll triggers
+- **Custom CSS**: Tailored styling for specific effects
+
+## 📚 Fonts Used
+
+- **Danfo**: Custom typeface for special elements
+- **Bebas Neue**: Bold display font for hero text
+- **Open Sauce**: Clean sans-serif for body text
+
+## 🎯 Featured Projects
+
+1. **KOMOREBI — COMPANY PROFILE WEBSITE**
+   - Live Demo: https://komorebi-zeta.vercel.app/
+   - Tech: Next.js, TypeScript, Tailwind CSS
+
+2. **SMILE — MENTAL HEALTH SUPPORT CHATBOT**
+   - GitHub: https://github.com/zaidannoor/Bangkit-capstone
+   - Tech: Node.js, Google Cloud Platform
+   - Role: Contributor
+
+3. **KICKSOLUTION — SHOE CLEANING SERVICE**
+   - GitHub: https://github.com/imambahy/kicksolution/tree/master
+   - Tech: PHP (Laravel), MySQL, Ajax
+
+## 📋 Certifications
+
+- **Udemy**: The Ultimate React Course 2024: React, Next.js, Redux & More
+- **Coursera**: Foundations of User Experience (UX) Design
+- **Dicoding Indonesia**: Web Programming, Backend Development, and Cloud Computing
+- **Google Cloud**: Google Cloud Computing Foundations (Core Infrastructure, Networking & Security, Data, ML, AI)
+
+## 🎮 Interactive Features
+
+### Mini Game
+- **Target Clicking Game**: Interactive game in Icebreakers section
+- **Score Tracking**: Real-time score updates
+- **Timer**: 30-second countdown
+- **Responsive**: Works on all devices
+
+### Parallax Effects
+- **Side Parallax**: Projects slide from left/right on scroll
+- **Smooth Transitions**: Cubic-bezier easing
+- **Viewport Detection**: Smart scroll-based animations
+
+## 🚀 Getting Started
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/imambahy/portfolio-2025.git
+cd portfolio-2025
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   └── CustomCursor.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+└── hooks/
+    └── useGSAPScroll.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Colors
+Edit CSS variables in `globals.css`:
+```css
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #888888;
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+}
+```
 
-## Deploy on Vercel
+### Fonts
+Update font imports in `globals.css` and `layout.tsx` to use your preferred fonts.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is automatically deployed to Vercel:
+
+- **Repository**: https://github.com/imambahy/portfolio-2025
+- **Live Site**: https://portfolio-2025-ten-nu.vercel.app/
+- **Auto Deploy**: Connected to GitHub for automatic updates
+
+## 📱 Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers
+
+## 📄 License
+
+MIT License - feel free to use this design for your own projects!
+
+---
+
+**Built with ❤️ by Imam Bahy Putra Susetyo**

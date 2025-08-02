@@ -1,9 +1,22 @@
 /* src/app/globals.css */
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Danfo&display=swap');
+
+/* Open Sauce Font - Fallback to system fonts */
+@font-face {
+  font-family: 'Open Sauce';
+  src: local('Arial'), local('Helvetica'), local('sans-serif');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --accent: #888888;
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
 }
 
 @theme inline {
@@ -15,16 +28,31 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sauce', Arial, Helvetica, sans-serif;
   cursor: none; /* Hide default cursor */
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Font Classes */
+.font-danfo {
+  font-family: 'Danfo', serif;
+}
+
+.font-bebas {
+  font-family: var(--font-bebas-neue), 'Bebas Neue', sans-serif;
+}
+
+.font-opensauce {
+  font-family: 'Open Sauce', Arial, Helvetica, sans-serif;
 }
 
 /* Custom Cursor */
@@ -32,7 +60,7 @@ body {
   position: fixed;
   width: 20px;
   height: 20px;
-  background: #00bfae;
+  background: #ffffff;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -42,7 +70,7 @@ body {
 
 .custom-cursor.hover {
   transform: scale(2);
-  background: #00bfae;
+  background: #ffffff;
 }
 
 .custom-cursor.click {
@@ -54,7 +82,7 @@ body {
   position: fixed;
   width: 8px;
   height: 8px;
-  background: rgba(0, 191, 174, 0.5);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -72,7 +100,196 @@ body {
   }
 }
 
-/* Existing animations... */
+/* Typography */
+.text-hero {
+  font-size: clamp(4rem, 12vw, 12rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.text-large {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+/* Parallax Container */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Project Grid with Parallax */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  padding: 4rem 0;
+}
+
+.project-item {
+  position: relative;
+  cursor: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.project-item:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.project-item:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 80%;
+}
+
+.project-category {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+  font-weight: 300;
+}
+
+.project-link:hover .project-category {
+  color: var(--text-primary);
+}
+
+.project-title {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.project-title::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--text-secondary);
+  opacity: 0.3;
+}
+
+.project-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--text-secondary);
+  opacity: 0.3;
+}
+
+.project-link:hover .project-title {
+  color: #ff6b35;
+  transform: scale(1.02);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-visit {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.project-link:hover .project-visit {
+  color: var(--text-primary);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Side parallax effect */
+.project-item.from-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.project-item.from-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.project-item.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Project specific colors */
+.project-item:nth-child(1) .project-title {
+  color: #ff6b35;
+}
+
+.project-item:nth-child(2) .project-title {
+  color: #888888;
+}
+
+.project-item:nth-child(3) .project-title {
+  color: #ff6b35;
+}
+
+/* About Section Improvements */
+.about-section {
+  position: relative;
+  padding: 8rem 0;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.about-highlight {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -186,3 +403,175 @@ body {
 .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
 .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
 .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.scroll-indicator::after {
+  content: '';
+  width: 1px;
+  height: 2rem;
+  background: var(--text-secondary);
+  animation: pulse 2s infinite;
+}
+
+/* Button styles */
+.btn-outline {
+  border: 1px solid var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  color: var(--text-primary);
+  background: transparent;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+}
+
+.btn-outline:hover {
+  background: var(--text-primary);
+  color: var(--background);
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .text-hero {
+    font-size: clamp(3rem, 15vw, 8rem);
+  }
+  
+  .text-large {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .projects-grid {
+    gap: 4rem;
+  }
+  
+  .project-item {
+    min-height: 40vh;
+    justify-content: center !important;
+  }
+  
+  .project-link {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .project-title {
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+  
+  .project-category {
+    font-size: 0.7rem;
+  }
+  
+  /* Ensure contact section is always visible on mobile */
+  #contact {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+    padding: 5rem 1.5rem !important;
+  }
+  
+  /* Ensure contact buttons are visible */
+  .btn-outline {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Force contact section to be above other elements */
+  #contact {
+    position: relative !important;
+    z-index: 10 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-hero {
+    font-size: clamp(2.5rem, 20vw, 6rem);
+  }
+  
+  .project-title {
+    font-size: clamp(1.5rem, 12vw, 3rem);
+  }
+  
+  .project-item {
+    min-height: 30vh;
+  }
+}
+
+/* Contact section specific styles */
+#contact {
+  position: relative;
+  z-index: 5;
+  overflow: visible;
+}
+
+#contact .scroll-trigger {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile specific contact fixes */
+@media (max-width: 768px) {
+  #contact {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+    padding: 5rem 1.5rem !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  
+  #contact .scroll-trigger {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  
+  #contact .btn-outline {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Ensure text is visible */
+  #contact h2,
+  #contact p {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* Always visible elements */
+.always-visible {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.always-visible * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
