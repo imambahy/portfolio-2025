@@ -11,43 +11,51 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
-      
+
       projectRefs.current.forEach((ref, index) => {
-        if (ref && index < 3) { // Only handle 3 projects
+        if (ref && index < 3) {
+          // Only handle 3 projects
           const rect = ref.getBoundingClientRect();
           const elementTop = rect.top;
           const elementHeight = rect.height;
-          
+
           // Check if element is in viewport
           if (elementTop < windowHeight && elementTop > -elementHeight) {
-            const progress = (windowHeight - elementTop) / (windowHeight + elementHeight);
+            const progress =
+              (windowHeight - elementTop) / (windowHeight + elementHeight);
             const isOdd = index % 2 === 0;
-            
+
             if (isOdd) {
               // Slide from left
-              ref.style.transform = `translateX(${Math.max(-100 + progress * 100, 0)}%)`;
+              ref.style.transform = `translateX(${Math.max(
+                -100 + progress * 100,
+                0
+              )}%)`;
             } else {
               // Slide from right
-              ref.style.transform = `translateX(${Math.min(100 - progress * 100, 0)}%)`;
+              ref.style.transform = `translateX(${Math.min(
+                100 - progress * 100,
+                0
+              )}%)`;
             }
-            
+
             ref.style.opacity = Math.min(progress * 2, 1).toString();
           }
         }
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Mini Game functionality
   useEffect(() => {
-    const target = document.getElementById('game-target');
-    const scoreElement = document.getElementById('game-score');
-    const timeElement = document.getElementById('game-time');
-    const startButton = document.getElementById('start-game');
-    
+    const target = document.getElementById("game-target");
+    const scoreElement = document.getElementById("game-score");
+    const timeElement = document.getElementById("game-time");
+    const startButton = document.getElementById("start-game");
+
     let score = 0;
     let timeLeft = 30;
     let gameInterval: NodeJS.Timeout;
@@ -56,43 +64,43 @@ export default function Home() {
 
     const moveTarget = () => {
       if (!target) return;
-      
+
       const container = target.parentElement;
       if (!container) return;
-      
+
       const containerRect = container.getBoundingClientRect();
       const targetSize = 32; // 8 * 4 (w-8 = 2rem = 32px)
-      
+
       const maxX = containerRect.width - targetSize;
       const maxY = containerRect.height - targetSize;
-      
+
       const randomX = Math.random() * maxX;
       const randomY = Math.random() * maxY;
-      
+
       target.style.left = `${randomX}px`;
       target.style.top = `${randomY}px`;
-      target.style.transform = 'translate(0, 0)';
+      target.style.transform = "translate(0, 0)";
     };
 
     const startGame = () => {
       if (isGameActive) return;
-      
+
       isGameActive = true;
       score = 0;
       timeLeft = 30;
-      
+
       if (scoreElement) scoreElement.textContent = score.toString();
       if (timeElement) timeElement.textContent = timeLeft.toString();
-      if (startButton) startButton.textContent = 'Game Running...';
-      
+      if (startButton) startButton.textContent = "Game Running...";
+
       moveTarget();
-      
+
       gameInterval = setInterval(moveTarget, 1500);
-      
+
       timeInterval = setInterval(() => {
         timeLeft--;
         if (timeElement) timeElement.textContent = timeLeft.toString();
-        
+
         if (timeLeft <= 0) {
           endGame();
         }
@@ -103,37 +111,37 @@ export default function Home() {
       isGameActive = false;
       clearInterval(gameInterval);
       clearInterval(timeInterval);
-      
+
       if (startButton) startButton.textContent = `Game Over! Score: ${score}`;
-      
+
       setTimeout(() => {
-        if (startButton) startButton.textContent = 'Play Again';
+        if (startButton) startButton.textContent = "Play Again";
       }, 2000);
     };
 
     const handleTargetClick = () => {
       if (!isGameActive) return;
-      
+
       score++;
       if (scoreElement) scoreElement.textContent = score.toString();
-      
+
       moveTarget();
     };
 
     if (target) {
-      target.addEventListener('click', handleTargetClick);
+      target.addEventListener("click", handleTargetClick);
     }
-    
+
     if (startButton) {
-      startButton.addEventListener('click', startGame);
+      startButton.addEventListener("click", startGame);
     }
 
     return () => {
       if (target) {
-        target.removeEventListener('click', handleTargetClick);
+        target.removeEventListener("click", handleTargetClick);
       }
       if (startButton) {
-        startButton.removeEventListener('click', startGame);
+        startButton.removeEventListener("click", startGame);
       }
       clearInterval(gameInterval);
       clearInterval(timeInterval);
@@ -187,8 +195,8 @@ export default function Home() {
                     <span className="about-highlight">
                       cloud-powered chatbots
                     </span>
-                    , I&apos;m all about writing code that clicks — both functionally
-                    and visually.
+                    , I&apos;m all about writing code that clicks — both
+                    functionally and visually.
                   </p>
                   <p>
                     Always up for collaboration, good ideas, or just nerding out
@@ -221,50 +229,68 @@ export default function Home() {
                 FULLSTACK DEVELOPMENT / WEB APPLICATIONS
               </div>
             </div>
-            
+
             <div className="projects-grid">
               {/* Project 1 - Komorebi */}
-              <div className="project-item scroll-trigger" ref={(el) => addProjectRef(el, 0)}>
-                <a href="https://komorebi-zeta.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-link">
+              <div
+                className="project-item scroll-trigger"
+                ref={(el) => addProjectRef(el, 0)}
+              >
+                <a
+                  href="https://komorebi-zeta.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
                   <div className="project-category">
                     Fullstack Development / Web Application
                   </div>
                   <h3 className="project-title">
                     KOMOREBI — COMPANY PROFILE WEBSITE
                   </h3>
-                  <div className="project-visit">
-                    Visit Site →
-                  </div>
+                  <div className="project-visit">Visit Site →</div>
                 </a>
               </div>
 
               {/* Project 2 - SMILE (Bangkit Capstone) */}
-              <div className="project-item scroll-trigger" ref={(el) => addProjectRef(el, 1)}>
-                <a href="https://github.com/zaidannoor/Bangkit-capstone?tab=readme-ov-file" target="_blank" rel="noopener noreferrer" className="project-link">
+              <div
+                className="project-item scroll-trigger"
+                ref={(el) => addProjectRef(el, 1)}
+              >
+                <a
+                  href="https://github.com/zaidannoor/Bangkit-capstone?tab=readme-ov-file"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
                   <div className="project-category">
                     Mental Health / AI Chatbot Application
                   </div>
                   <h3 className="project-title">
                     SMILE — MENTAL HEALTH SUPPORT CHATBOT
                   </h3>
-                  <div className="project-visit">
-                    View on GitHub →
-                  </div>
+                  <div className="project-visit">View on GitHub →</div>
                 </a>
               </div>
 
               {/* Project 3 - Kicksolution */}
-              <div className="project-item scroll-trigger" ref={(el) => addProjectRef(el, 2)}>
-                <a href="https://github.com/imambahy/kicksolution/tree/master" target="_blank" rel="noopener noreferrer" className="project-link">
+              <div
+                className="project-item scroll-trigger"
+                ref={(el) => addProjectRef(el, 2)}
+              >
+                <a
+                  href="https://github.com/imambahy/kicksolution/tree/master"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
                   <div className="project-category">
                     E-commerce / Shoe Store Platform
                   </div>
                   <h3 className="project-title">
                     KICKSOLUTION — SHOE CLEANING SERVICE
                   </h3>
-                  <div className="project-visit">
-                    View on GitHub →
-                  </div>
+                  <div className="project-visit">View on GitHub →</div>
                 </a>
               </div>
             </div>
@@ -273,91 +299,107 @@ export default function Home() {
       </div>
 
       {/* Icebreakers Section */}
-      <div className="py-20 px-6">
+      <div className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="scroll-trigger">
-            <h2 className="text-white font-opensauce text-sm uppercase tracking-wider mb-12">
+            <h2 className="text-white font-opensauce text-sm uppercase tracking-wider mb-20">
               ICEBREAKERS
             </h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Left - Interests */}
-              <div className="space-y-8">
+              <div className="space-y-10">
                 <h3 className="text-white font-opensauce text-lg mb-6">
                   When I&apos;m not coding, you&apos;ll find me:
                 </h3>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4 group cursor-none">
                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
                       <span className="text-2xl">🎵</span>
                     </div>
                     <div>
-                      <h4 className="text-white font-opensauce text-base">Listening to Music</h4>
-                      <p className="text-white/60 font-opensauce text-sm">Electronic, Alt, Lo-fi, Jazz</p>
+                      <h4 className="text-white font-opensauce text-base">
+                        Listening to Music
+                      </h4>
+                      <p className="text-white/60 font-opensauce text-sm">
+                        Electronic, Alt, Lo-fi, Jazz
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-4 group cursor-none">
                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
                       <span className="text-2xl">🎮</span>
                     </div>
                     <div>
-                      <h4 className="text-white font-opensauce text-base">Gaming</h4>
-                      <p className="text-white/60 font-opensauce text-sm">RPG, Strategy, Indie Games</p>
+                      <h4 className="text-white font-opensauce text-base">
+                        Gaming
+                      </h4>
+                      <p className="text-white/60 font-opensauce text-sm">
+                        RPG, Strategy, Indie Games
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-4 group cursor-none">
                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
                       <span className="text-2xl">📚</span>
                     </div>
                     <div>
-                      <h4 className="text-white font-opensauce text-base">Reading</h4>
-                      <p className="text-white/60 font-opensauce text-sm">Tech, Sci-fi, Self-development</p>
+                      <h4 className="text-white font-opensauce text-base">
+                        Reading
+                      </h4>
+                      <p className="text-white/60 font-opensauce text-sm">
+                        Tech, Sci-fi, Self-development
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-4 group cursor-none">
                     <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
                       <span className="text-2xl">✍️</span>
                     </div>
                     <div>
-                      <h4 className="text-white font-opensauce text-base">Writing</h4>
-                      <p className="text-white/60 font-opensauce text-sm">Blog posts, Tech articles</p>
+                      <h4 className="text-white font-opensauce text-base">
+                        Writing
+                      </h4>
+                      <p className="text-white/60 font-opensauce text-sm">
+                        Blog posts, Tech articles
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Right - Mini Game */}
               <div className="space-y-6">
                 <h3 className="text-white font-opensauce text-lg mb-6">
                   Quick Game: Click the moving target
                 </h3>
-                
+
                 <div className="relative w-full h-64 bg-white/5 rounded-lg overflow-hidden border border-white/10">
-                  <div 
+                  <div
                     id="game-target"
                     className="absolute w-8 h-8 bg-white rounded-full cursor-none transition-all duration-200 hover:scale-110"
                     style={{
-                      left: '50%',
-                      top: '50%',
-                      transform: 'translate(-50%, -50%)'
+                      left: "50%",
+                      top: "50%",
+                      transform: "translate(-50%, -50%)",
                     }}
                   ></div>
-                  
+
                   <div className="absolute bottom-4 left-4 text-white/60 font-opensauce text-sm">
                     Score: <span id="game-score">0</span>
                   </div>
-                  
+
                   <div className="absolute bottom-4 right-4 text-white/60 font-opensauce text-sm">
                     Time: <span id="game-time">30</span>s
                   </div>
                 </div>
-                
+
                 <div className="text-center">
-                  <button 
+                  <button
                     id="start-game"
                     className="btn-outline font-opensauce text-xs"
                   >
@@ -367,36 +409,33 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="mt-12 text-center">
-              <p className="text-white/80 font-opensauce text-lg leading-relaxed max-w-3xl mx-auto">
-                Want to know more about me? Let&apos;s connect and share our interests! 
-                I&apos;m always open to discussing music, games, books, or any tech topics.
-              </p>
-            </div>
+            {/* Additional spacing before contact */}
+            <div className="mt-16"></div>
           </div>
         </div>
       </div>
 
       {/* Contact Section */}
-      <div id="contact" className="contact-section py-20 px-6 always-visible">
+      <div id="contact" className="contact-section py-32 px-6 always-visible">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center space-y-8">
+          <div className="text-center space-y-12">
             <h2 className="text-white font-opensauce text-sm uppercase tracking-wider">
-              Got a question, proposal or project or want to work together on
-              something? Feel free to reach out.
+              Want to know more about me? Let&apos;s connect and share our
+              interests! I&apos;m always open to discussing music, games, books,
+              or any tech topics.
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a 
-                href="https://github.com/imambahy" 
-                target="_blank" 
+              <a
+                href="https://github.com/imambahy"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline font-opensauce text-xs cursor-none"
               >
                 LET&apos;S COLLABORATE
               </a>
-              <a 
-                href="https://www.linkedin.com/in/imambahyputra/" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/imambahyputra/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline font-opensauce text-xs cursor-none"
               >
