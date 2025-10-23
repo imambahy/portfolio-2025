@@ -293,6 +293,48 @@ export default function Home() {
                   <div className="project-visit">View on GitHub →</div>
                 </a>
               </div>
+
+              {/* Project 4 - Mini Project - eventify */}
+              <div
+                className="project-item scroll-trigger"
+                ref={(el) => addProjectRef(el, 3)}
+              >
+                <a
+                  href="https://fe-event-wine.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  <div className="project-category">
+                    Event Management / Event Booking Platform
+                  </div>
+                  <h3 className="project-title">
+                    EVENTIFY — EVENT MANAGEMENT SYSTEM
+                  </h3>
+                  <div className="project-visit">Visit Site →</div>
+                </a>
+              </div>
+
+              {/* Project 5 - Final Project - Nginepin */}
+              <div
+                className="project-item scroll-trigger"
+                ref={(el) => addProjectRef(el, 4)}
+              >
+                <a
+                  href="https://final-project-fe-ebon.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  <div className="project-category">
+                    Property Rental Web Application
+                  </div>
+                  <h3 className="project-title">
+                    NGINEPIN - PROPERTY RENTAL PLATFORM
+                  </h3>
+                  <div className="project-visit">Visit Site →</div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -408,7 +450,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            
+
             {/* Additional spacing before contact */}
             <div className="mt-16"></div>
           </div>
