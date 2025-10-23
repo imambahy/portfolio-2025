@@ -223,7 +223,7 @@ export default function Home() {
           <div className="scroll-trigger">
             <div className="flex justify-between items-center mb-16">
               <h2 className="text-white font-opensauce text-sm uppercase tracking-wider">
-                FEATURED PROJECTS (3)
+                FEATURED PROJECTS (5)
               </h2>
               <div className="text-white font-opensauce text-sm uppercase tracking-wider">
                 FULLSTACK DEVELOPMENT / WEB APPLICATIONS

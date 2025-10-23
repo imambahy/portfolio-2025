@@ -1,12 +1,12 @@
 /* src/app/globals.css */
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Danfo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Danfo&display=swap");
 
 /* Open Sauce Font - Fallback to system fonts */
 @font-face {
-  font-family: 'Open Sauce';
-  src: local('Arial'), local('Helvetica'), local('sans-serif');
+  font-family: "Open Sauce";
+  src: local("Arial"), local("Helvetica"), local("sans-serif");
   font-weight: normal;
   font-style: normal;
 }
@@ -36,7 +36,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Open Sauce', Arial, Helvetica, sans-serif;
+  font-family: "Open Sauce", Arial, Helvetica, sans-serif;
   cursor: none; /* Hide default cursor */
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -44,15 +44,15 @@ body {
 
 /* Custom Font Classes */
 .font-danfo {
-  font-family: 'Danfo', serif;
+  font-family: "Danfo", serif;
 }
 
 .font-bebas {
-  font-family: var(--font-bebas-neue), 'Bebas Neue', sans-serif;
+  font-family: var(--font-bebas-neue), "Bebas Neue", sans-serif;
 }
 
 .font-opensauce {
-  font-family: 'Open Sauce', Arial, Helvetica, sans-serif;
+  font-family: "Open Sauce", Arial, Helvetica, sans-serif;
 }
 
 /* Custom Cursor */
@@ -193,7 +193,7 @@ body {
 }
 
 .project-title::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2rem;
   left: 0;
@@ -204,7 +204,7 @@ body {
 }
 
 .project-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2rem;
   left: 0;
@@ -262,6 +262,14 @@ body {
 }
 
 .project-item:nth-child(3) .project-title {
+  color: #ff6b35;
+}
+
+.project-item:nth-child(4) .project-title {
+  color: #888888;
+}
+
+.project-item:nth-child(5) .project-title {
   color: #ff6b35;
 }
 
@@ -346,7 +354,8 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -355,7 +364,8 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -398,11 +408,21 @@ body {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-children > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-children > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-children > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.stagger-children > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -420,7 +440,7 @@ body {
 }
 
 .scroll-indicator::after {
-  content: '';
+  content: "";
   width: 1px;
   height: 2rem;
   background: var(--text-secondary);
@@ -449,42 +469,42 @@ body {
   .scroll-indicator {
     display: none !important;
   }
-  
+
   .text-hero {
     font-size: clamp(3rem, 15vw, 8rem);
   }
-  
+
   .text-large {
     font-size: clamp(1.5rem, 8vw, 3rem);
   }
-  
+
   .about-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .projects-grid {
     gap: 4rem;
   }
-  
+
   .project-item {
     min-height: 40vh;
     justify-content: center !important;
   }
-  
+
   .project-link {
     max-width: 100%;
     text-align: center;
   }
-  
+
   .project-title {
     font-size: clamp(2rem, 10vw, 4rem);
   }
-  
+
   .project-category {
     font-size: 0.7rem;
   }
-  
+
   /* Ensure contact section is always visible on mobile */
   #contact {
     display: block !important;
@@ -493,14 +513,14 @@ body {
     min-height: auto !important;
     padding: 5rem 1.5rem !important;
   }
-  
+
   /* Ensure contact buttons are visible */
   .btn-outline {
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
-  
+
   /* Force contact section to be above other elements */
   #contact {
     position: relative !important;
@@ -512,11 +532,11 @@ body {
   .text-hero {
     font-size: clamp(2.5rem, 20vw, 6rem);
   }
-  
+
   .project-title {
     font-size: clamp(1.5rem, 12vw, 3rem);
   }
-  
+
   .project-item {
     min-height: 30vh;
   }
@@ -546,19 +566,19 @@ body {
     position: relative !important;
     z-index: 10 !important;
   }
-  
+
   #contact .scroll-trigger {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
   }
-  
+
   #contact .btn-outline {
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
-  
+
   /* Ensure text is visible */
   #contact h2,
   #contact p {
